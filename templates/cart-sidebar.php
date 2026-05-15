@@ -1,0 +1,96 @@
+<?php
+/**
+ * CartOfficer – templates/cart-sidebar.php
+ *
+ * Slide-in sidebar with the full cart table, quantity controls, delete
+ * buttons, and the "Create Order" button.
+ *
+ * Include ONCE per page, usually just before </body>:
+ *
+ *   <?php include __DIR__ . '/vendor/tandrezone/cart-officer/templates/cart-sidebar.php'; ?>
+ *
+ * The sidebar reads the data-order-route attribute on the #co-sidebar element
+ * to know where to POST the order.  Set this to your order endpoint URL,
+ * or configure window.CartOfficer.orderRoute in JavaScript instead.
+ */
+
+$orderRoute = $orderRoute ?? '/orders';
+?>
+<!-- Overlay -->
+<div id="co-overlay" class="co-overlay" aria-hidden="true"></div>
+
+<!-- Sidebar -->
+<aside id="co-sidebar"
+       class="co-sidebar"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Shopping cart"
+       data-order-route="<?= htmlspecialchars($orderRoute, ENT_QUOTES, 'UTF-8') ?>">
+
+    <!-- Header -->
+    <div class="co-sidebar__header">
+        <h2 class="co-sidebar__title">Your Cart</h2>
+        <button class="co-sidebar__close" aria-label="Close cart" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6"  x2="6"  y2="18"/>
+                <line x1="6"  y1="6"  x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Body -->
+    <div class="co-sidebar__body">
+
+        <!-- Empty state -->
+        <div id="co-cart-empty" class="co-empty" style="display:none;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3
+                         3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0
+                         0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0
+                         1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
+            </svg>
+            <p>Your cart is empty.</p>
+        </div>
+
+        <!-- Product table -->
+        <table id="co-cart-table" class="co-table" style="display:none;" aria-label="Cart items">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"><span class="sr-only">Remove</span></th>
+                </tr>
+            </thead>
+            <tbody id="co-cart-body">
+                <!-- Rows injected by cart.js -->
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="co-sidebar__footer">
+        <div class="co-total-row">
+            <span>Grand Total</span>
+            <span id="co-cart-total" class="co-total-amount">$0.00</span>
+        </div>
+
+        <button id="co-order-btn"
+                class="co-order-btn"
+                type="button"
+                disabled
+                aria-disabled="true">
+            Create Order
+        </button>
+
+        <button id="co-clear-btn" class="co-clear-btn" type="button">
+            Clear cart
+        </button>
+    </div>
+
+</aside>

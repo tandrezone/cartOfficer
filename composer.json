@@ -1,0 +1,26 @@
+{
+    "name": "tandrezone/cart-officer",
+    "description": "A lightweight, session-based PHP shopping cart package. Supports add, update, delete and order creation.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["cart", "shopping-cart", "ecommerce", "php"],
+    "authors": [
+        {
+            "name": "tandrezone",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "CartOfficer\\": "src/"
+        }
+    },
+    "extra": {
+        "templates-dir": "templates",
+        "public-dir": "public"
+    },
+    "minimum-stability": "stable"
+}
