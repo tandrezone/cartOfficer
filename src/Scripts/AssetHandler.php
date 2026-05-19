@@ -3,15 +3,15 @@ namespace CartOfficer\Scripts;
 
 class AssetHandler
 {
-    public String $packageName = "cart-officer";
     public static function publishAssets()
     {
+        $packageName = "cart-officer";
         // Path to the vendor directory
         $vendorDir = dirname(__DIR__, 4);
-        $assetsDirs = ['public', 'templates'];
+        $assetsDirs = ['public/assets', 'templates'];
         foreach ($assetsDirs as $assetsDir) {
             // Target: project_root/public/packagename
-            $targetDir = dirname($vendorDir) . '/'.$assetsDir.'/' . self::$packageName;
+            $targetDir = dirname($vendorDir) . '/'.$assetsDir.'/' . $packageName;
             // Source: vendor/vendor-name/package-name/public
            $sourceDir = dirname(__DIR__, 2) . '/'.$assetsDir;
             if (!is_dir($sourceDir)) {
