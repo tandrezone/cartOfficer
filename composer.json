@@ -18,6 +18,11 @@
             "CartOfficer\\": "src/"
         }
     },
+    "scripts": {
+            "post-autoload-dump": [
+                "CartOfficer\\Scripts\\AssetHandler::publishAssets"
+            ]
+        },
     "extra": {
         "templates-dir": "templates",
         "public-dir": "public"
