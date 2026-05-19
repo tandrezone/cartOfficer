@@ -70,7 +70,7 @@ $controller->handle();             // reads $_POST / JSON body, writes JSON resp
 Place the **cart button** wherever you want it (header, navbar, etc.):
 
 ```php
-<?php include __DIR__ . '/vendor/tandrezone/cart-officer/templates/cart-button.php'; ?>
+<?php include __DIR__ . '/vendor/tandrezone/cart-officer/templates/cart-button.html'; ?>
 ```
 
 Place the **sidebar** (and overlay) once, just before `</body>`:
@@ -78,7 +78,7 @@ Place the **sidebar** (and overlay) once, just before `</body>`:
 ```php
 <?php
 $orderRoute = '/orders';   // shown as a hint; JS reads window.CartOfficer.orderRoute
-include __DIR__ . '/vendor/tandrezone/cart-officer/templates/cart-sidebar.php';
+include __DIR__ . '/vendor/tandrezone/cart-officer/templates/cart-sidebar';
 ?>
 ```
 
